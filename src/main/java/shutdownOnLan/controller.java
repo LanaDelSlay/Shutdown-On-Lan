@@ -54,7 +54,15 @@ public class controller {
     @FXML
     private Label connectionStatusLabel;
     
-    public static void saveIP(String IP) throws IOException {
+    String test = "hehe";
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    
+	
+     SuggestionProvider sp = SuggestionProvider.create(new ArrayList()); 
+	 
+    
+    public static void saveIP(String IP, SuggestionProvider suggestionProvider) throws IOException {
     	String dataFolder = System.getProperty("user.home") + File.separator + "SDOL";
 	    File dataFile = new File(dataFolder+File.separator+"savedIPs");
 	    FileWriter myWriter = new FileWriter(dataFolder+File.separator+"savedIPs",true);
@@ -82,7 +90,7 @@ public class controller {
     	//Loading saved IPs
         String dataFolder = System.getProperty("user.home") + File.separator + "SDOL";
 	    Path p1 = Paths.get(System.getProperty("user.home") + File.separator + "SDOL"+File.separator+"savedIPs");
-	    
+	    new AutoCompletionTextFieldBinding<>(ipTextField, sp);
 	    Files.createDirectories(Paths.get(System.getProperty("user.home") + File.separator + "SDOL"));
 	    new FileOutputStream((System.getProperty("user.home") + File.separator + "SDOL"+File.separator+"savedIPs"), true).close();
 	    
@@ -161,7 +169,7 @@ public class controller {
        if(s.isConnected()) {connectionStatusLabel.setText("Server Running!");
 		connectionStatusLabel.setTextFill(Color.GREEN);
 		System.out.println("Saving");
-        saveIP(IP);
+        saveIP(IP, sp);
 	    
 		} 
 			
@@ -183,7 +191,8 @@ public class controller {
          }
     	}
     }
-    	
+    
+    
     @FXML
     void shutdown() {
     	if (isReachable()) {
@@ -229,5 +238,11 @@ public class controller {
     	}
     	
     }
-    	
+    
+    @FXML
+    void terminateProgram() {
+        System.exit(0);
+
+    }
+    
     }
