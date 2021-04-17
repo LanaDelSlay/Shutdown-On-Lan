@@ -1,4 +1,4 @@
-package shutdownOnLan;
+package server;
 
 import java.io.*; 
 import java.text.*;
@@ -19,7 +19,6 @@ public class Server2
        	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
     	LocalDateTime now = LocalDateTime.now(); 
         ServerSocket ss = new ServerSocket(888); 
-        System.out.println("Server Started");
         while (true)  
         { 
             Socket s = null; 

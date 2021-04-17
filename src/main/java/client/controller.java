@@ -1,4 +1,4 @@
-package shutdownOnLan;
+package client;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -59,7 +59,7 @@ public class controller {
 	    //Checks if IP has been stored already
 	    System.out.println(IP);
 	    if(dataFile.length() < 1) {
-	    	//myWriter.append(IP + System.getProperty("line.separator"));
+	    	myWriter.append(IP + System.getProperty("line.separator"));
 	  	    myWriter.close();
 	    }
 	    while ((nextLine = dataInput.readLine()) != null){
@@ -142,21 +142,21 @@ public class controller {
     		connectionStatusLabel.setText("IP is empty.");
     		connectionStatusLabel.setTextFill(Color.RED);
     	} else {
-    	String IP = ipTextField.getText();
+    	String hostName = ipTextField.getText();
     	
     	 try
          { 
     		 
-             InetAddress ip = InetAddress.getByName(IP); 
+             InetAddress ip = InetAddress.getByName(hostName); 
              Socket s = new Socket(ip, 888); 
              DataInputStream dis = new DataInputStream(s.getInputStream()); 
              DataOutputStream dos = new DataOutputStream(s.getOutputStream()); 
-             System.out.println("Connecting to: " + IP);
+             System.out.println("Connecting to: " + hostName);
 
        if(s.isConnected()) {connectionStatusLabel.setText("Server Running!");
 		connectionStatusLabel.setTextFill(Color.GREEN);
 		System.out.println("Saving");
-        saveIP(IP);
+        saveIP(hostName);
 	    
 		} 
 			
@@ -167,7 +167,7 @@ public class controller {
          	
              
          } catch(SocketException e){ 
-        	 connectionStatusLabel.setText("Server not found");
+        	connectionStatusLabel.setText("Server not found");
      		connectionStatusLabel.setTextFill(Color.RED);
          	System.out.println("Connection closed"); 
          	
@@ -191,20 +191,12 @@ public class controller {
                 Socket s = new Socket(ip, 888); 
                 DataInputStream dis = new DataInputStream(s.getInputStream()); 
                 DataOutputStream dos = new DataOutputStream(s.getOutputStream()); 
-                Boolean stop = false;
-          
-                // the following loop performs the exchange of 
-                // information between client and client handler 
                
                     dos.writeUTF("shutdown"); 
                 	scn.close(); 
                 	dis.close(); 
                 	dos.close(); 
                 	s.close();
-                
-                  
-                // closing resources 
-              
                 
             } catch(SocketException e){ 
             	System.out.println("Connection closed"); 

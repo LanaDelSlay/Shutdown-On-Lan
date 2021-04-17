@@ -1,4 +1,4 @@
-package shutdownOnLan;
+package server;
 
 import java.io.*; 
 import java.text.*;

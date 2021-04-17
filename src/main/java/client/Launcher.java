@@ -1,4 +1,4 @@
-package shutdownOnLan;
+package client;
 
 public class Launcher {
     
