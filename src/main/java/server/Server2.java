@@ -101,6 +101,7 @@ public class Server2 extends WebSocketServer {
         break;
       }
     }
+    
   }
 
   @Override
@@ -113,6 +114,15 @@ public class Server2 extends WebSocketServer {
 
   @Override
   public void onStart() {
+	    try {
+			launchHTTPSite();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     System.out.println("Server started!");
     setConnectionLostTimeout(0);
     setConnectionLostTimeout(1000);
@@ -156,4 +166,16 @@ public class Server2 extends WebSocketServer {
       System.exit(0);
   }
 
+  
+	static void launchHTTPSite() throws IOException, InterruptedException {
+		ProcessBuilder pb = new ProcessBuilder("python","custom_server.py").inheritIO();
+		Process p = pb.start();
+		p.waitFor();
+		BufferedReader bfr = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		String line = "";
+		while ((line = bfr.readLine()) != null) {
+		System.out.println(line);
+		}
+	}
+  
 }

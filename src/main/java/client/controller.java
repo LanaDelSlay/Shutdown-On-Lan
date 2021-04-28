@@ -183,6 +183,7 @@ public class controller {
 				ClientNew cc = new ClientNew(uri);
 				cc.connectBlocking();
 				cc.send("shutdown");
+				//cc.sendShutdown();
 				cc.close();
 
 			} catch(IOException e) {

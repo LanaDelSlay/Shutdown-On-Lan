@@ -1,0 +1,43 @@
+html, body {
+    overflow-x: hidden;
+  }
+h1 {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+
+}
+
+h3 {
+    text-align: center;
+}
+.header {
+    background-color:darkred;
+    text-align: center;
+
+    margin: 0 -9999rem;
+    padding: 0.25rem 9999rem;
+}
+
+body{
+    background-color: blanchedalmond;
+    text-align: center;
+
+    margin: 0 -9999rem;
+    padding: 0.25rem 9999rem;
+
+}
+
+#button{
+font-size: large;
+margin: 0 auto;
+width: 25%;
+padding: 10px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
