@@ -39,7 +39,7 @@
     <a href="https://github.com/LanaDelSlay/Shutdown-On-Lan/releases"><strong>Download Now »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Example</a>
+    <a href="https://i.imgur.com/XkbcIeS.png">View Example</a>
     ·
     <a href="https://github.com/LanaDelSlay/Shutdown-On-Lan/issues">Report Bugs</a>
   
@@ -70,20 +70,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This project is oriented towards shutting down networked local machine with any computer, including phones!
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Features:
+* Predictive text and persisting saved IPs using client.
+* Fully working, Java based WebServer!
+* Local HTTP site used to shutdown machines using a phone! :smile:
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Amazing libraries making my life SO much easier.
 * [Jython](https://www.jython.org/)
 * [JavaFX](https://openjfx.io/)
 * [Apache Commons](https://commons.apache.org/)
@@ -98,29 +94,48 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
+#### Server Setup On Windows
 
+1. Download [this](https://github.com/LanaDelSlay/Shutdown-On-Lan/releases) Extract the server Jar to whatever directory you want!
+2. The best way to install the server is to create an automated task using task scheduler. To do this on Windows we'll click the windows key and R at the same time
+3. Type in the Run box and click OK/Enter:
+   ```sh
+   taskschd.msc
+   ```
+   <img src="https://i.imgur.com/0oawp9G.png" alt="Step 2">
+3. On the left side expand the "Task Scheduler Library"
+<img src="https://i.imgur.com/s0P0jRP.png" alt="Step 3">
+4. On the right side click create basic task 
+<img src="https://i.imgur.com/GVVJcKt.png" alt="Step 4">
+5. Put whatever name you want in the name box, but select the following settings:
+<img src="https://i.imgur.com/p3Bp8h0.png" alt="Step 5">
+6. Open the "Triggers" tab
+<img src="https://i.imgur.com/ibdZ4d0.png" alt="Step 6">
+7.Select At startup for the "Begin the task" box
+<img src="https://i.imgur.com/ibdZ4d0.png" alt="Step 6">
 
+#### Running client
+
+Running the client is easy! Just double click the .jar and type in the IP and click shutdown.
+<img src="https://i.imgur.com/XkbcIeS.png" alt="Client Example">
+
+Any IPs used will be saved and populate the predictive suggestions next launch.
+<img src="https://i.imgur.com/2Nod8CU.png" alt="Predictive Text Example">
+
+#### Connecting to HTTP Server
+
+Type the servers IPv4 + port 8075 into your browser 
+```
+192.168.0.47::8750
+```
+
+Type the server's IP of which you'd like to shut down, then click the button to send the command! 
+<img src="https://i.imgur.com/gUG6u0F.png" alt="HTTP Server">
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+Do whatever you want with this, I do not care :) (Dont hurt people, though)
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -134,18 +149,12 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
-
-
-
 <!-- CONTACT -->
 ## Contact
 
 Graham - gmiller1902@gmail.com
 
 Project Link: [https://github.com/LanaDelSlay/Shutdown-On-Lan/](https://github.com/LanaDelSlay/Shutdown-On-Lan/)
-
-
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
