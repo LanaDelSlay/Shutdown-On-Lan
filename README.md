@@ -67,9 +67,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![SDOL][product-screenshot]](https://i.imgur.com/XkbcIeS.png)
-
 This project is oriented towards shutting down networked local machine with any computer, including phones!
 
 Features:
@@ -115,7 +112,6 @@ To get a local copy up and running follow these simple example steps.
 <img src="https://i.imgur.com/ibdZ4d0.png" alt="Step 6">
 
 #### Running client
-
 Running the client is easy! Just double click the .jar and type in the IP and click shutdown.
 
 <img src="https://i.imgur.com/XkbcIeS.png" alt="Client Example">
@@ -125,10 +121,9 @@ Any IPs used will be saved and populate the predictive suggestions next launch.
 <img src="https://i.imgur.com/2Nod8CU.png" alt="Predictive Text Example">
 
 #### Connecting to HTTP Server
-
 Type the servers IPv4 + port 8075 into your browser 
 ```
-192.168.0.47::8750
+192.168.0.47:8750
 ```
 
 Type the server's IP of which you'd like to shut down, then click the button to send the command! 
