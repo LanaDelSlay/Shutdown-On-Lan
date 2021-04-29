@@ -100,7 +100,7 @@ To get a local copy up and running follow these simple example steps.
    taskschd.msc
    ```
    <img src="https://i.imgur.com/0oawp9G.png" alt="Step 2">
-3. On the left side expand the "Task Scheduler Library"
+3. On the left side expand and click on the "Task Scheduler Library"
 <img src="https://i.imgur.com/s0P0jRP.png" alt="Step 3">
 4. On the right side click create basic task 
 <img src="https://i.imgur.com/GVVJcKt.png" alt="Step 4">
