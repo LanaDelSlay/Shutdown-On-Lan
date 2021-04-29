@@ -93,7 +93,7 @@ To get a local copy up and running follow these simple example steps.
 
 #### Server Setup On Windows
 
-1. Download [this](https://github.com/LanaDelSlay/Shutdown-On-Lan/releases) Extract the server Jar to whatever directory you want!
+1. Download [this](https://github.com/LanaDelSlay/Shutdown-On-Lan/releases) Keep the server jar and files in the server folder all together, they need eachother!
 2. The best way to install the server is to create an automated task using task scheduler. To do this on Windows we'll click the windows key and R at the same time
 3. Type in the Run box and click OK/Enter:
    ```sh
