@@ -99,7 +99,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    taskschd.msc
    ```
-   <img src="https://i.imgur.com/0oawp9G.png" alt="Step 2">
+<img src="https://i.imgur.com/0oawp9G.png" alt="Step 2">
 3. On the left side expand and click on the "Task Scheduler Library"
 <img src="https://i.imgur.com/s0P0jRP.png" alt="Step 3">
 4. On the right side click create basic task 
@@ -108,8 +108,12 @@ To get a local copy up and running follow these simple example steps.
 <img src="https://i.imgur.com/p3Bp8h0.png" alt="Step 5">
 6. Open the "Triggers" tab
 <img src="https://i.imgur.com/ibdZ4d0.png" alt="Step 6">
-7.Select At startup for the "Begin the task" box
-<img src="https://i.imgur.com/ibdZ4d0.png" alt="Step 6">
+7. Select At startup for the "Begin the task" box
+<img src="https://i.imgur.com/sG6TkeB.png" alt="Step 7">
+8. Switch to the "Actions" tab, the the right of Triggers
+<img src="https://i.imgur.com/dX5CnKV.png" alt="Step 8">
+9. Click the New button at the bottom, and leave the action on "Start a program". Click browse and browse to the startRebootServer.bat included in the release. 
+<img src="https://i.imgur.com/5IfIYpg.png" alt="Step 9">
 
 #### Running client
 Running the client is easy! Just double click the .jar and type in the IP and click shutdown.
