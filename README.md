@@ -115,7 +115,7 @@ To get a local copy up and running follow these simple example steps.
 <img src="https://i.imgur.com/dX5CnKV.png" alt="Step 8">
 9. Click the New button at the bottom, and leave the action on "Start a program". Click browse and browse to the startRebootServer.bat included in the release. 
 <img src="https://i.imgur.com/5IfIYpg.png" alt="Step 9">
-10. You're all done! Now to test if it's working use open client and type in the servers IP and use the test connection button. Or connect via your web browser, by typing the ipv4 postfixed with 8750. Check <a href="#connecting-to-http-server">this</a> for a more info 
+10. You're all done! Now to test if it's working use open client and type in the servers IP and use the test connection button. Or connect via your web browser, by typing the ipv4 postfixed with 8750. Check <a href="#connecting-to-http-server">this</a> for more info 
 
 #### Running client
 Running the client is easy! Just double click the .jar and type in the IP and click shutdown.
