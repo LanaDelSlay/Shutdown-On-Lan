@@ -7,20 +7,40 @@
     UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <script src="JavaScript/app.js"></script>
+    <script type="text/javascript" src="JavaScript/warpspeed.js"></script>
 
     <title>SDOL</title>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+
     <div class="header">
         <h1>Shutdown On LAN</h1>
       </div>
 </head>
+
 <body>
-    <h3>  
+<div style="position:relative; height:100vh;">
+	<div style="position:absolute; z-index:1 top:0; left:0; width:100%; height:100%;"> 
+		<canvas id="canvas" style="width:100%; height:100%;"></canvas>
+		<script>
+			new WarpSpeed("canvas"); 
+		</script>
+	</div> 
+	<div style="position:absolute; z-index:2 top:0; left:0; width:100%; height:100%;">
+		<div style="font-size:3vw; color:#FFFFFF; font-weight:100; text-align:center; margin-top:5rem;">
+      
+       <h3>  
         Press the button to shutdown.
     </h3>
-    <label for="IP">IP:</label>
-    <input type="text" id="IP" name="IP">
-    <br> <br>
-    <button id="button" onClick="reply_click()" type="button">Shutdown</button>
+</div>
+    
+    <label title="No IP will shutdown localhost!" for="IP" style="color:#FFFFFF; font-size: x-large; ">IP:</label>
+    <input style= "width: 8%; height: 3.5%;" type="text" id="IP" name="IP">
+    <br><br>
+    <button title="No IP will shutdown localhost!" id="button" onClick="reply_click()" type="button">Shutdown</button>
+        
+    </div>
+	</div>
+</div>
+   </body>
 
-</body>
 </html>

@@ -1,6 +1,15 @@
-html, body {
-    overflow-x: hidden;
-  }
+
+
+html, body{
+  padding: 0;
+  margin: 0;
+}
+html {
+  min-height: 100%;
+}
+body{
+min-height: 100vh;
+}
 h1 {
   margin: auto;
   width: 50%;
@@ -17,18 +26,16 @@ h3 {
     background-color:darkred;
     text-align: center;
 
-    margin: 0 -9999rem;
-    padding: 0.25rem 9999rem;
+    margin: 0 rem;
+    padding: 0.25rem ;
 }
 
 body{
     background-color: blanchedalmond;
     text-align: center;
-
-    margin: 0 -9999rem;
-    padding: 0.25rem 9999rem;
-
 }
+
+
 
 #button{
 font-size: large;
@@ -40,4 +47,5 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
+
 
