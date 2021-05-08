@@ -131,9 +131,7 @@ Type the servers IPv4 + port 8075 into your browser
 ```
 192.168.0.47:8750
 ```
-
-Type the server's IP of which you'd like to shut down, then click the button to send the command! 
-
+Type the server's IP of which you'd like to shut down, then click the button to send the command! (or leave empty to shutdown local machine)
 <img src="https://i.imgur.com/LQkQP6T.png" alt="HTTP Server">
 
 <!-- USAGE EXAMPLES -->
