@@ -1,6 +1,12 @@
 function reply_click()
 {   var ip;
     ip = document.getElementById('IP').value
+
+    //If no input, select local host by using 0.0.0.0
+    if(ip) {
+    } else {
+        ip = "0.0.0.0";
+    }
   
     
     const ws = new WebSocket("ws://"+ip+":888");
