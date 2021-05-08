@@ -134,7 +134,7 @@ Type the servers IPv4 + port 8075 into your browser
 
 Type the server's IP of which you'd like to shut down, then click the button to send the command! 
 
-<img src="https://i.imgur.com/gUG6u0F.png" alt="HTTP Server">
+<img src="https://i.imgur.com/LQkQP6T.png" alt="HTTP Server">
 
 <!-- USAGE EXAMPLES -->
 ## Usage
