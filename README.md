@@ -100,7 +100,7 @@ To get a local copy up and running follow these simple example steps.
    taskschd.msc
    ```
    <img src="https://i.imgur.com/0oawp9G.png" alt="Step 3">
-4. Click "Task Scheduler Library" on the left hand side, then look for a task called Shutdown Server. If you see it, then it was installed, and you can either run it there or restart your computer for it to begin starting on stortup.
+4. Click "Task Scheduler Library" on the left hand side, then look for a task called Shutdown Server. If you see it, then it was installed, and you can either run it there using th ebutton on the right hand side, or restart your computer for it to begin starting on stortup.
 
 #### Manual Server Setup On Windows
 
