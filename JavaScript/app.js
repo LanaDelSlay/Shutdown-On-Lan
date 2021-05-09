@@ -6,7 +6,11 @@ function reply_click()
     if(ip) {
 
     } else {
-        ip = "localhost";
+
+    var ip = location.host;
+    var n = ip.indexOf(":");
+    var ip = ip.substr(0,n)
+    //Removes port and colon. 
     }
   
     
