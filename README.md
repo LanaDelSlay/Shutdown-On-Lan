@@ -161,7 +161,7 @@ Project Link: [https://github.com/LanaDelSlay/Shutdown-On-Lan/](https://github.c
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)
-
+* [Hyperspeed JS Background](https://fdossena.com/?p=warpspeed/i.frag)
 
 
 
