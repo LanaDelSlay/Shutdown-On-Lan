@@ -18,7 +18,7 @@ import java.util.zip.ZipOutputStream;
 public class unzipper {
 
 	public static void main(String[] args) throws IOException {
-        String fileZip = "src/main/java/serverInstaller/Server.zip";
+        String fileZip = "Server.zip";
         File destDir = new File("C:\\rebootServer\\");
         destDir.mkdir();
 		File f = new File(fileZip);
@@ -56,7 +56,7 @@ public class unzipper {
         zis.closeEntry();
         zis.close();
         
-        
+        System.exit(0);
 	}
 	
 	
