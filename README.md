@@ -54,7 +54,7 @@ This project is oriented towards shutting down networked local machine with any 
 
 Features:
 * Predictive text and persisting saved IPs using client.
-* Fully working, Java based WebServer!
+* Fully working, Python based WebServer!
 * Local HTTP site used to shutdown machines using a phone! :smile:
 
 ### Built With
