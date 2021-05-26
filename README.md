@@ -87,7 +87,8 @@ To get a local copy up and running follow these simple example steps.
    taskschd.msc
    ```
    <img src="https://i.imgur.com/0oawp9G.png" alt="Step 3">
-4. Click "Task Scheduler Library" on the left hand side, then look for a task called Shutdown Server. If you see it, then it was installed, and you can either run it there using th ebutton on the right hand side, or restart your computer for it to begin starting on stortup.
+4. Click "Task Scheduler Library" on the left hand side, then look for a task called Shutdown Server. If you see it, then it was installed, and you can either run it there using the button on the right hand side, or restart your computer for it to begin starting on startup. If you don't see this then the install failed. Here's what to try next:
+5. Head to C:\\ This program should unzip a jar file to C:\\rebootServer\Server inside here you should start from step 3 from the following manual setup. If you do not see any of those file head to the next section to do it manually!
 
 #### Manual Server Setup On Windows
 
