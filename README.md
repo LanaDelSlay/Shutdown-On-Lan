@@ -74,6 +74,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Software needed
 1.) Python
+<br />
 2.) JDK
 
 ### Installation
