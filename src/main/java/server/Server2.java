@@ -135,8 +135,8 @@ public class Server2 extends WebSocketServer {
       try (Stream<Path> files = Files.list(Paths.get(logsFolder))) {
           long count = files.count();
           try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                  new FileOutputStream(logsFolder+File.separator+"Log"+" " + count +".txt"), "utf-8"))) {
-       writer.write("Shutdown received to "+ InetAddress.getLocalHost() +":" + dtf.format(now) );
+                  new FileOutputStream(logsFolder+File.separator+"Log.txt"), "utf-8"))) {
+       writer.write("\nShutdown received to "+ InetAddress.getLocalHost() +":" + dtf.format(now) );
     }
 
       }
