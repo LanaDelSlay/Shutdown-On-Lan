@@ -91,8 +91,6 @@ public class Server2 extends WebSocketServer {
 		}
 		Server2 s = new Server2(port);
 		s.start();
-		System.out.println("ChatServer started on port: " + s.getPort());
-
 		BufferedReader sysin = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			String in = sysin.readLine();

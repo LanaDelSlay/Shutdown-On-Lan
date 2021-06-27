@@ -21,7 +21,7 @@ function shutdown_click()
         console.log('sent message to' + ip)
 }
 
-function shutdown_click(){
+function sleep_click(){
     var ip;
     ip = document.getElementById('IP').value
 
