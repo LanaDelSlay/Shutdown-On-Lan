@@ -58,7 +58,6 @@ public class Server2 extends WebSocketServer {
 
 	@Override
 	public void onMessage(WebSocket conn, String message) {
-		System.out.println(message);
 		if(message.contains("shutdown")) {
 			try {
 				shutdown();
@@ -69,8 +68,17 @@ public class Server2 extends WebSocketServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if(messagge.contains("sleep")) {
-
+			
+		} else if(message.contains("sleep")) {
+			try {
+				sleep();
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
