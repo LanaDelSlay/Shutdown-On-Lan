@@ -69,6 +69,8 @@ public class Server2 extends WebSocketServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(messagge.contains("sleep")) {
+
 		}
 
 	}
@@ -151,6 +153,44 @@ public class Server2 extends WebSocketServer {
 		System.exit(0);
 	}
 
+
+	public static void sleep() throws RuntimeException, IOException {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
+		String shutdownCommand;        
+		String logsFolder = System.getProperty("user.home") + File.separator + "SDOL_Logs";
+		Path path = Paths.get(logsFolder);
+
+		if (!Files.exists(path)) {
+			Files.createDirectory(path);
+		}
+		try (Stream<Path> files = Files.list(Paths.get(logsFolder))) {
+			long count = files.count();
+			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(logsFolder+File.separator+"Log.txt", true), "utf-8"))) {
+				writer.append("\nSleep received to "+ InetAddress.getLocalHost() +":" + dtf.format(now));
+			}	
+
+		}
+
+		String operatingSystem = System.getProperty("os.name");
+
+
+		if ("Linux".equals(operatingSystem) || "Mac OS X".equals(operatingSystem)) {
+			shutdownCommand = "sleep now";
+			String[] args = new String[] {"/bin/bash", "-c", shutdownCommand};
+			Process proc = new ProcessBuilder(args).start();
+		}
+		else if (operatingSystem.contains("Windows")) {
+			shutdownCommand = "Rundll32.exe Powrprof.dll,SetSuspendState Sleep";
+		}
+		else {
+			throw new RuntimeException("Unsupported operating system.");
+		}
+
+		Runtime.getRuntime().exec(shutdownCommand);
+		System.exit(0);
+	}
 
 
 
