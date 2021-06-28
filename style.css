@@ -38,12 +38,15 @@ body{
 #button{
 font-size: large;
 margin: 0 auto;
-width: 25%;
+width: 20%;
 padding: 10px;
 text-align: center;
 display: flex;
 justify-content: center;
-align-items: center;
+float: left;
+margin-left: 40%;
+margin-bottom: 5px;
+align-content: center;
 }
 
 
