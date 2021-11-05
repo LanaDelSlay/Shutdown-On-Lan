@@ -45,7 +45,6 @@ public class controller {
 	@FXML
 	private Label connectionStatusLabel;
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 
 	public static void saveIP(String IP) throws IOException {
 		String dataFolder = System.getProperty("user.home") + File.separator + "SDOL";

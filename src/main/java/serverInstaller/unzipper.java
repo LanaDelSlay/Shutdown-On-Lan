@@ -15,7 +15,6 @@ public class unzipper {
         String fileZip = "Server.zip";
         File destDir = new File("C:\\rebootServer\\");
         destDir.mkdir();
-		File f = new File(fileZip);
 
 	    byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
@@ -45,8 +44,6 @@ public class unzipper {
         	
         }      
         createTask();
-
-
         zis.closeEntry();
         zis.close();
         

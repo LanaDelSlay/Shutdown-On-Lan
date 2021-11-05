@@ -1,33 +1,37 @@
 package server;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.stream.Stream;
-import org.java_websocket.WebSocket;
-import org.java_websocket.drafts.Draft;
-import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.java_websocket.drafts.Draft_6455;
+import java.time.format.DateTimeFormatter;
+import org.java_websocket.drafts.Draft;
+import java.net.UnknownHostException;
+import org.java_websocket.WebSocket;
+import java.net.InetSocketAddress;
+import java.io.OutputStreamWriter;
+import java.io.InputStreamReader;
+import java.io.FileOutputStream;
+import java.time.LocalDateTime;
+import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.util.Collections;
+import java.net.InetAddress;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.io.Writer;
+import java.io.File;
+import java.sql.*;
 
 /**
  * A simple WebSocketServer implementation. Keeps track of a "chatroom".
  */
 public class Server2 extends WebSocketServer {
+	
+	static Boolean serverRunning = false;
+
+	static String sourceIp = "";
 
 	public Server2(int port) throws UnknownHostException {
 		super(new InetSocketAddress(port));
@@ -43,6 +47,7 @@ public class Server2 extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
+		sourceIp = conn.getRemoteSocketAddress().toString();
 		conn.send("Welcome to the server!"); //This method sends a message to the new client
 		broadcast("new connection: " + handshake
 				.getResourceDescriptor()); //This method sends a message to all clients connected
@@ -68,7 +73,7 @@ public class Server2 extends WebSocketServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		} else if(message.contains("sleep")) {
 			try {
 				sleep();
@@ -80,7 +85,6 @@ public class Server2 extends WebSocketServer {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	public static void main(String[] args) throws InterruptedException, IOException {
@@ -92,7 +96,8 @@ public class Server2 extends WebSocketServer {
 		Server2 s = new Server2(port);
 		s.start();
 		BufferedReader sysin = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
+		serverRunning = true;
+		while (serverRunning) {
 			String in = sysin.readLine();
 			s.broadcast(in);
 			if (in.equals("exit")) {
@@ -100,7 +105,7 @@ public class Server2 extends WebSocketServer {
 				break;
 			}
 		}
-
+		s.stop();
 	}
 
 	@Override
@@ -117,45 +122,29 @@ public class Server2 extends WebSocketServer {
 		Thread t = new Thread(httpServer);
 		t.start();
 		System.out.println("Server started!");
-		setConnectionLostTimeout(0);
 		setConnectionLostTimeout(1000);
 	}
 
 	public static void shutdown() throws RuntimeException, IOException {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
 		String shutdownCommand;        
-		String logsFolder = System.getProperty("user.home") + File.separator + "SDOL_Logs";
-		Path path = Paths.get(logsFolder);
-
-		if (!Files.exists(path)) {
-			Files.createDirectory(path);
-		}
-		try (Stream<Path> files = Files.list(Paths.get(logsFolder))) {
-			long count = files.count();
-			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(logsFolder+File.separator+"Log.txt", true), "utf-8"))) {
-				writer.append("\nShutdown received to "+ InetAddress.getLocalHost() +":" + dtf.format(now));
-			}	
-
-		}
-
 		String operatingSystem = System.getProperty("os.name");
 
-
 		if ("Linux".equals(operatingSystem) || "Mac OS X".equals(operatingSystem)) {
+			//to fix
 			shutdownCommand = "shutdown -h now";
 			String[] args = new String[] {"/bin/bash", "-c", shutdownCommand};
-			Process proc = new ProcessBuilder(args).start();
 		}
+
 		else if (operatingSystem.contains("Windows")) {
 			shutdownCommand = "shutdown.exe -s -t 0";
 		}
+
 		else {
 			throw new RuntimeException("Unsupported operating system.");
 		}
 
 		Runtime.getRuntime().exec(shutdownCommand);
+		log();
 		System.exit(0);
 	}
 
@@ -171,12 +160,10 @@ public class Server2 extends WebSocketServer {
 			Files.createDirectory(path);
 		}
 		try (Stream<Path> files = Files.list(Paths.get(logsFolder))) {
-			long count = files.count();
 			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(logsFolder+File.separator+"Log.txt", true), "utf-8"))) {
 				writer.append("\nSleep received to "+ InetAddress.getLocalHost() +":" + dtf.format(now));
 			}	
-
 		}
 
 		String operatingSystem = System.getProperty("os.name");
@@ -185,7 +172,7 @@ public class Server2 extends WebSocketServer {
 		if ("Linux".equals(operatingSystem) || "Mac OS X".equals(operatingSystem)) {
 			shutdownCommand = "sleep now";
 			String[] args = new String[] {"/bin/bash", "-c", shutdownCommand};
-			Process proc = new ProcessBuilder(args).start();
+			//To fix
 		}
 		else if (operatingSystem.contains("Windows")) {
 			shutdownCommand = "Rundll32.exe Powrprof.dll,SetSuspendState Sleep";
@@ -195,10 +182,45 @@ public class Server2 extends WebSocketServer {
 		}
 
 		Runtime.getRuntime().exec(shutdownCommand);
+		serverRunning = false;
 		System.exit(0);
 	}
 
 
+	public static void log() throws IOException {
+		Statement stmt = null;
+		Connection conn = null;
+		String logsFolder = System.getProperty("user.home") + File.separator + "SDOL_Logs";
+		Path path = Paths.get(logsFolder);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+
+		if (!Files.exists(path)) {
+			Files.createDirectory(path);
+		}
+
+		try (Stream<Path> files = Files.list(Paths.get(logsFolder))) {
+			LocalDateTime now = LocalDateTime.now(); 
+			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(logsFolder+File.separator+"Log.txt", true), "utf-8"))) {
+				writer.append("\nShutdown received to "+ InetAddress.getLocalHost() +":" + dtf.format(now));
+			}	
+		}
+
+		try {
+			LocalDateTime now = LocalDateTime.now(); 
+			conn = DriverManager.getConnection("jdbc:mysql://192.168.0.48/sdol?" + "user=username&password=password");
+			stmt = conn.createStatement();
+			stmt.executeUpdate("INSERT INTO time (time, source) VALUES ('"+ now +"', '" + sourceIp +"')");
+
+			// Do something with the Connection
+
+		} catch (SQLException ex) {
+			// handle any errors
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode()); 
+		}
+	}
 
 }
 
