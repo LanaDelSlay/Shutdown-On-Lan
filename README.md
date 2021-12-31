@@ -69,9 +69,6 @@ Amazing libraries making my life SO much easier.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Software needed
 1.) Python
 <br />
